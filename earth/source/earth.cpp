@@ -239,16 +239,24 @@ void init(){
   glGenTextures( 1, &cloud_texture );
   glGenTextures( 1, &perlin_texture);
   
-  std::string earth_img = source_path + "/images/checkerboard.png";
+  std::string earth_img = source_path + "/images/world.200405.3.png";
   loadFreeImageTexture(earth_img.c_str(), month_texture, GL_TEXTURE0);
     
   glUniform1i( glGetUniformLocation(program, "textureEarth"), 0 );
 
   //TODO: ADD NIGHT TEXTURE
+  std::string night_img = source_path + "/images/BlackMarble.png";
+  loadFreeImageTexture(night_img.c_str(), night_texture, GL_TEXTURE2);
 
   //TODO: ADD CLOUD TEXTURE
+  std::string cloud_img = source_path + "/images/cloud_combined.png";
+  loadFreeImageTexture(cloud_img.c_str(), cloud_texture, GL_TEXTURE1);
+
+  glUniform1i( glGetUniformLocation(program, "textureCloud"), 1);
   
   //TODO: ADD NOISE TEXTURE
+  std::string noise_img = source_path + "/images/perlin_noise.png";
+  loadFreeImageTexture(noise_img.c_str(), perlin_texture, GL_TEXTURE3);
 
   glBindVertexArray( vao );
   glBindBuffer( GL_ARRAY_BUFFER, buffer );
