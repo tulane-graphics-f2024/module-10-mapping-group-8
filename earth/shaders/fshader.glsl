@@ -35,11 +35,19 @@ void main()
   
   vec4 diffuse_color = texture(textureEarth, texCoord );
   vec4 diffuse_colorC = texture(textureCloud, texCoord );
+  vec4 diffuse_colorn = texture(textureNight, texCoord );
+  vec4 diffuse_colorp = texture(texturePerlin, texCoord );
+  
   diffuse_color = Kd*diffuse_color;
   diffuse_colorC = Kd*diffuse_colorC;
+  diffuse_colorn = (1-Kd)*diffuse_colorn;
+  diffuse_colorp = Kd*diffuse_colorp;
   
-  fragColor = ambient + diffuse_color + diffuse_colorC;
+  
+  fragColor = ambient + diffuse_color + diffuse_colorC+diffuse_colorn+diffuse_colorp;
   fragColor = clamp(fragColor, 0.0, 1.0);
   fragColor.a = 1.0;
 }
+
+
 
