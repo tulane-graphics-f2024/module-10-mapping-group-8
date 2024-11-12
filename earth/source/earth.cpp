@@ -248,6 +248,8 @@ void init(){
   std::string night_img = source_path + "/images/BlackMarble.png";
   loadFreeImageTexture(night_img.c_str(), night_texture, GL_TEXTURE2);
 
+  glUniform1i(glGetUniformLocation(program, "textureNight"), 2);
+
   //TODO: ADD CLOUD TEXTURE
   std::string cloud_img = source_path + "/images/cloud_combined.png";
   loadFreeImageTexture(cloud_img.c_str(), cloud_texture, GL_TEXTURE1);
@@ -257,6 +259,8 @@ void init(){
   //TODO: ADD NOISE TEXTURE
   std::string noise_img = source_path + "/images/perlin_noise.png";
   loadFreeImageTexture(noise_img.c_str(), perlin_texture, GL_TEXTURE3);
+
+  glUniform1i(glGetUniformLocation(program, "texturePerlin"), 3);
 
   glBindVertexArray( vao );
   glBindBuffer( GL_ARRAY_BUFFER, buffer );
